@@ -20,6 +20,7 @@
   "homepage": "https://github.com/HenriqueGPinho/disney_plus_clone#readme",
   "devDependencies": {
     "gulp": "^4.0.2",
+    "gulp-imagemin": "^7.1.0",
     "gulp-sass": "^5.1.0",
     "sass": "^1.69.0"
   }
