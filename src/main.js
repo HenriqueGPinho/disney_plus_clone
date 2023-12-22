@@ -1,7 +1,21 @@
 document.addEventListener('DOMContentLoaded', function () {
+  const heroSection = document.querySelector('.hero');
+  const heroHeight = heroSection.clientHeight;
   const buttons = document.querySelectorAll('[data-tab-button]');
-  const questions = document.querySelectorAll('[data-faq-question]')
+  const questions = document.querySelectorAll('[data-faq-question]');
   
+
+  window.addEventListener('scroll', function () {
+    const currentPosition = window.scrollY;
+
+    if (currentPosition < heroHeight) {
+      hideHeaderElements();
+    } else {
+      showHeaderElements();
+    }
+  });
+  
+  //shows' section; tabs
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', function (btn) {
       const tabTarget = btn.target.dataset.tabButton; 
@@ -14,10 +28,24 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  //faq accordion
   for (let i = 0; i < questions.length; i++) {
     questions[i].addEventListener('click', toggleAnswer);
   }
 });
+
+
+function hideHeaderElements() {
+  const header = document.querySelector('header');
+
+  header.classList.add('header--is-hidden');
+}
+
+function showHeaderElements() {
+  const header = document.querySelector('header');
+
+  header.classList.remove('header--is-hidden');
+}
 
 function removeActiveButton() {
   const buttons = document.querySelectorAll('[data-tab-button');
